@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2017 05:41:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.pojos.Detalles" table="DETALLES" schema="MARKET" optimistic-lock="version">
+        <id name="idDetalle" type="big_decimal">
+            <column name="ID_DETALLE" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="productos" type="big_decimal">
+            <column name="ID_PRODUCTO" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="compra" type="big_decimal">
+            <column name="ID_COMPRA" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="cantidadProducto" type="big_decimal">
+            <column name="CANTIDAD_PRODUCTO" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

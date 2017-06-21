@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="ProductWS">
+      <implementation-class>services.webservices.ProductWS</implementation-class>
+    </service>
+    <service name="CarroWS">
+      <implementation-class>services.webservices.CarroWS</implementation-class>
+    </service>
+    <service name="GondolaWS">
+      <implementation-class>services.webservices.GondolaWS</implementation-class>
+    </service>
+    <service name="CajaWS">
+      <implementation-class>services.webservices.CajaWS</implementation-class>
+    </service>
+    <service name="PathWS">
+      <implementation-class>services.webservices.PathWS</implementation-class>
+    </service>
+  </services>
+  <clients/>
+  <jsr109>false</jsr109>
+</jax-ws>

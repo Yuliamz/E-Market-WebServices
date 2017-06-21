@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2017 05:41:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.pojos.Listadeseos" table="LISTADESEOS" schema="MARKET" optimistic-lock="version">
+        <id name="idListadeseo" type="big_decimal">
+            <column name="ID_LISTADESEO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="model.pojos.Cliente" fetch="select">
+            <column name="ID_CLIENTE" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="fechaGenerada" type="date">
+            <column name="FECHA_GENERADA" length="7" not-null="true" />
+        </property>
+        <set name="productoses" table="DESEOS_PRODUCTOS" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ID_LISTADESEO" precision="22" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.pojos.Productos">
+                <column name="ID_PRODUCTO" precision="22" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

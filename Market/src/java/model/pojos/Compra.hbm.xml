@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2017 05:41:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.pojos.Compra" table="COMPRA" schema="MARKET" optimistic-lock="version">
+        <id name="idCompra" type="big_decimal">
+            <column name="ID_COMPRA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="facturas" type="big_decimal">
+            <column name="ID_FACTURA" precision="22" scale="0" />
+        </property>
+        <property name="cliente" type="big_decimal">
+            <column name="ID_CLIENTE" precision="22" scale="0" not-null="true"/>
+        </property>
+        
+    </class>
+</hibernate-mapping>

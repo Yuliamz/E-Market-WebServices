@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+  <endpoint implementation="services.webservices.ProductWS" name="ProductWS" url-pattern="/ProductWS"/>
+  <endpoint implementation="services.webservices.CarroWS" name="CarroWS" url-pattern="/CarroWS"/>
+  <endpoint implementation="services.webservices.GondolaWS" name="GondolaWS" url-pattern="/GondolaWS"/>
+  <endpoint implementation="services.webservices.CajaWS" name="CajaWS" url-pattern="/CajaWS"/>
+  <endpoint implementation="services.webservices.PathWS" name="PathWS" url-pattern="/PathWS"/>
+</endpoints>

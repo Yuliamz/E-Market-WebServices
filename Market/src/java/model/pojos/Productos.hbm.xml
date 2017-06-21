@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2017 05:41:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.pojos.Productos" table="PRODUCTOS" schema="MARKET" optimistic-lock="version">
+        <id name="idProducto" type="big_decimal">
+            <column name="ID_PRODUCTO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="marcas" type="string">
+            <column name="ID_MARCA" length="50" not-null="true" />
+        </property>
+        <property name="nombreProducto" type="string">
+            <column name="NOMBRE_PRODUCTO" length="50" not-null="true" />
+        </property>
+        <property name="precioProducto" type="big_decimal">
+            <column name="PRECIO_PRODUCTO" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="descripcionProducto" type="string">
+            <column name="DESCRIPCION_PRODUCTO" length="1024" not-null="true" />
+        </property>
+        <property name="fechavencimientoProducto" type="date">
+            <column name="FECHAVENCIMIENTO_PRODUCTO" length="7" />
+        </property>
+        <property name="tipoProducto" type="string">
+            <column name="TIPO_PRODUCTO" length="2" not-null="true" />
+        </property>
+        <property name="cantidadProducto" type="big_decimal">
+            <column name="CANTIDAD_PRODUCTO" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="medidaProducto" type="string">
+            <column name="MEDIDA_PRODUCTO" length="2" not-null="true" />
+        </property>
+        <property name="cantidadMedidaProducto" type="big_decimal">
+            <column name="CANTIDAD_MEDIDA_PRODUCTO" precision="22" scale="0" not-null="true" />
+        </property>
+<!--        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <set name="listadeseoses" table="DESEOS_PRODUCTOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PRODUCTO" precision="22" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.pojos.Listadeseos">
+                <column name="ID_LISTADESEO" precision="22" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="detalleses" table="DETALLES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PRODUCTO" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.pojos.Detalles" />
+        </set>
+        <set name="celdaGondolas" table="CELDA_GONDOLA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PRODUCTO" precision="22" scale="0" />
+            </key>
+            <one-to-many class="model.pojos.CeldaGondola" />
+        </set>-->
+    </class>
+</hibernate-mapping>

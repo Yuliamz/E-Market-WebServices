@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2017 05:41:40 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.pojos.Caja" table="CAJA" schema="MARKET" optimistic-lock="version">
+        <id name="idCaja" type="big_decimal">
+            <column name="ID_CAJA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="posicionXCaja" type="big_decimal">
+            <column name="POSICION_X_CAJA" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="posicionYCaja" type="big_decimal">
+            <column name="POSICION_Y_CAJA" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="facturases" table="FACTURAS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_CAJA" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.pojos.Facturas" />
+        </set>
+    </class>
+</hibernate-mapping>
