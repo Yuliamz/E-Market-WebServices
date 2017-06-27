@@ -50,16 +50,26 @@ public class CarroDAO {
             s.close();
         }
     }
-    
+    /**
+     * Se registra un producto al carro
+     * Se verifica si el producto ya ha sido registrado en el carro
+     * si ya a sido registrado, se busca el detalle correspondiente y se aumenta la cantidad
+     * caso contrario, se crea un detalle con cantidad uno
+     * @param ProductID ID del producto que es detectado por el carro
+     * @param carroID ID del carro
+     * @return TRUE si se registró el producto correctamente, FALSE en caso contrario
+     */
     public boolean addProduct(BigDecimal ProductID,BigDecimal carroID){
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
         s.beginTransaction();
         try {
+            // Busca un detalle con el producto indicado
             Detalles detail = (Detalles) s.createQuery("from Detalles d where d.compra=? and d.productos=?")
                     .setParameter(0, idCompra)
                     .setParameter(1, ProductID)
                     .uniqueResult();
+            //si no existe, lo crea
             if (detail!=null) {
                 BigDecimal cant = detail.getCantidadProducto().add(BigDecimal.ONE);
                 Query query = s.createSQLQuery("update Detalles set CANTIDAD_PRODUCTO=? where id_detalle=?")
@@ -68,6 +78,7 @@ public class CarroDAO {
                 query.executeUpdate();
                 s.getTransaction().commit();
                 return true;
+            //si existe aumenta la cantidad en uno
             }else{
                 BigDecimal id = ((BigDecimal) s.createQuery("select d.idDetalle from Detalles d order by d.idDetalle desc").setMaxResults(1).uniqueResult()).add(BigDecimal.ONE);
                 Query query = s.createSQLQuery("insert into Detalles values (?,?,?,?)")
