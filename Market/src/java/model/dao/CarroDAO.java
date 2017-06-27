@@ -1,39 +1,46 @@
 package model.dao;
 
 import java.math.BigDecimal;
-import java.util.Iterator;
-import java.util.List;
 import model.pojos.Detalles;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 /**
- *
  * @author Yuliamz
+ * @web https://github.com/Yuliamz/
+ * DAO for shopping Cart
  */
+
+//TODO quitar idCompra y poner la consula para tomar el ID  correspondiente
 public class CarroDAO {
     BigDecimal idCompra;
     
+    /**
+     * Inicia un proceso de compra, (hace una inserción en la tabla compras)
+     * Asigna un carro de compras a un proceso de compra (Incersión en la tabla Asgnación)
+     * @param clienteID ID del cliente que esta usando el carro
+     * @param carroID ID del carro
+     * @return TRUE si la asignacion se realiza correctamete FALSE en caso contrario
+     */
     public boolean addAsignacion(BigDecimal clienteID,BigDecimal carroID){
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
         s.beginTransaction();
         try {
+            //inserción del proceso de compra
             BigDecimal id = (BigDecimal) s.createQuery("select c.idCompra from Compra c order by c.idCompra desc").setMaxResults(1).uniqueResult();
             id =id.add(BigDecimal.ONE);
             idCompra=id;
-            System.out.println("id compra: "+id);
-            Query ins = s.createSQLQuery("insert into compra values (?,null,?)")
+            Query insCompra = s.createSQLQuery("insert into compra values (?,null,?)")
                     .setParameter(0, id)
                     .setParameter(1, clienteID);
-            ins.executeUpdate();
-            
-            Query query = s.createSQLQuery("insert into asignacion values (?,?)")
+            insCompra.executeUpdate();
+            //inserción de asignación
+            Query insAsig = s.createSQLQuery("insert into asignacion values (?,?)")
                 .setParameter(0, carroID)
                 .setParameter(1, id); 
-        query.executeUpdate();
+        insAsig.executeUpdate();
         s.getTransaction().commit();
         return true;
         } catch (Exception e) {
